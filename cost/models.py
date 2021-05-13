@@ -52,6 +52,7 @@ class BillDetailRecord(models.Model):
         INSURANCE = 13
         RECHARGE = 14
         OTHER = 15
+        STUDY = 16
 
         choices = (
             (FOOD, '餐饮美食'),
@@ -68,6 +69,7 @@ class BillDetailRecord(models.Model):
             (HEALTH, '医疗健康'),
             (INSURANCE, '保险'),
             (RECHARGE, '充值缴费'),
+            (STUDY, '学习教育'),
             (OTHER, '其他'),
         )
 

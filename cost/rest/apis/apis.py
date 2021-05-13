@@ -30,7 +30,9 @@ class BillApiSet(GenericViewSet,
         res = {}
         customer = request.user.customer
         bills = Bill.objects.filter(
-            customer=customer, pay_time__year=datetime.now().year).annotate(
+            customer=customer,
+            pay_time__year=datetime.now().year,
+            bill_detail_record__state=True).annotate(
             bill_amount=Sum(F('bill_detail_record__price') * F('bill_detail_record__number')))
         res['date'] = datetime.now().strftime('%Y')
         res['amount'] = bills.aggregate(total_amount=Sum('bill_amount'))['total_amount'] or 0
